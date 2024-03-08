@@ -35,13 +35,36 @@ function editContent($conn, $id, $title, $content, $img) {
     $stmt->close();
 }
 
-// Function to delete content
 function deleteContent($conn, $id) {
+    echo "ID: " . $id; // Check if ID is correct
+
+    // Query to fetch the filename based on the ID
+    $img = '';
+    $stmt = $conn->prepare("SELECT img FROM content WHERE id=?");
+    echo "Statement: " . $stmt->queryString; // Check the SQL statement
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->bind_result($img);
+    
+    // Fetch the filename
+    $stmt->fetch();
+    $stmt->close();
+
+    // Extracting the filename without the directory path
+    $filename = basename($img);
+
+    // Delete the file from the server
+    $filePath = "../church/uploads/" . $filename;
+    if (file_exists($filePath)) {
+        unlink($filePath);
+    }
+
+    // Delete the record from the database
     $stmt = $conn->prepare("DELETE FROM content WHERE id=?");
     $stmt->bind_param("i", $id);
-    
+
     if ($stmt->execute()) {
-        echo "Record deleted successfully";
+        echo "Record and file deleted successfully";
     } else {
         echo "Error deleting record: " . $stmt->error;
     }
@@ -66,7 +89,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         $img = $target_file; 
         addContent($conn, $page_id, $title, $content, $img);
-    } 
+    } elseif (isset($_POST["edit_content"])) {
+        $id = $conn->real_escape_string($_POST["id"]);
+        $title = $conn->real_escape_string($_POST["title"]);
+        $content = $conn->real_escape_string($_POST["content"]);
+        
+        // Handle file upload
+        $target_dir = "../church/uploads/";
+        $target_file = $target_dir . basename($_FILES["img"]["name"]);
+        move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
+        
+        $img = $target_file;
+        editContent($conn, $id, $title, $content, $img);
+    } elseif (isset($_POST["delete_content"])) {
+        $id = $conn->real_escape_string($_POST["id"]);
+        deleteContent($conn, $id);
+    }
 }
 
 // Fetch pages for selection
