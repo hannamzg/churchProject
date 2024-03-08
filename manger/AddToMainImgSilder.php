@@ -125,6 +125,30 @@
             <br>
             <input type="submit" value="Add Product">
         </form>
+        <?php
+            // Fetch content from database
+            $sql_content = "SELECT * FROM mainSilderimg";
+            $result_content = $conn->query($sql_content);
+
+            if ($result_content->num_rows > 0) {
+                while ($row = $result_content->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($row["title"]) . "</td>"; // Sanitize output
+                    echo "<td>" . htmlspecialchars($row["content"]) . "</td>"; // Sanitize output
+                    echo "<td>";
+                    echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>"; 
+                    echo "<td><img src='../" . htmlspecialchars($row["img"]) . "' style='max-width: 300px;'></td>"; // Display image   
+                    echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";
+                    echo "<input type='hidden' name='img' value='" . htmlspecialchars($row["img"]) . "'>";
+                    echo "<input type='submit' name='delete_content' value='Delete'>";
+                    echo "</form>";
+                    echo "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>No content available</td></tr>";
+            }
+        ?>
     </div>
 
 </body>
