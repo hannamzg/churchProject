@@ -18,7 +18,7 @@
             while ($row = $result->fetch_assoc()) {
                 echo "<h1>".$row['title']."</h1>";
                 echo "<p>".$row['content']."</p>";
-                echo '<img src="/church/church/' . $row['img'] . '" class="imgStart">';
+                echo '<img src="../church/' . $row['img'] . '" class="imgStart">';
 
             }
         ?>
@@ -53,9 +53,9 @@
                 $c = 0;
                 while ($row = $result->fetch_assoc()) {
                     if ($c == 0) { // Corrected comparison operator
-                        echo '<img src="/church/church/' . $row['img'] . '" alt="Slide ' . $row["id"] . '" class="slide active">';
+                        echo '<img src="../church/' . $row['img'] . '" alt="Slide ' . $row["id"] . '" class="slide active">';
                     } else {
-                        echo '<img src="/church/church/' . $row['img'] . '" alt="Slide ' . $row["id"] . '" class="slide">';
+                        echo '<img src="../church/' . $row['img'] . '" alt="Slide ' . $row["id"] . '" class="slide">';
                     }
                     $c++;
                 }
@@ -81,7 +81,7 @@
                 echo '<ul>
                         <li class="event">
                             <div class="event-title">'.$row['content'].'</div>
-                            <img src="/church/church/' . $row['img'] . '"  class="imgInEvent">
+                            <img src="../church/' . $row['img'] . '"  class="imgInEvent">
                         </li>
 
                     </ul>';

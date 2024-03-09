@@ -88,7 +88,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES["img"]["tmp_name"], $target_file); 
         
         $img = $target_file; 
-        addContent($conn, $page_id, $title, $content, $img);
+        if ($_FILES["img"]["error"] === UPLOAD_ERR_OK) {
+            addContent($conn, $page_id, $title, $content, 'church/uploads/' . basename($_FILES["img"]["name"]));
+        } else {
+            addContent($conn, $page_id, $title, $content, "");
+        }
+        
     } elseif (isset($_POST["edit_content"])) {
         $id = $conn->real_escape_string($_POST["id"]);
         $title = $conn->real_escape_string($_POST["title"]);
@@ -163,7 +168,7 @@ $result_pages = $conn->query($sql_pages);
                 echo "<tr>";
                 echo "<td>" . htmlspecialchars($row["title"]) . "</td>"; // Sanitize output
                 echo "<td>" . htmlspecialchars($row["content"]) . "</td>"; // Sanitize output
-                echo "<td><img src='" . htmlspecialchars($row["img"]) . "' style='max-width: 100px;'></td>"; // Display image
+                echo "<td><img src='../" . htmlspecialchars($row["img"]) . "' style='max-width: 100px;'></td>"; // Display image
                 echo "<td>";
                 echo "<form action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
                 echo "<input type='hidden' name='id' value='" . $row["id"] . "'>";

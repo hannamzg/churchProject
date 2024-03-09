@@ -119,7 +119,7 @@
         }
         ?>
 
-        <form action="/church/church/manger/AddToMainImgSilder.php" method="post" enctype="multipart/form-data">
+        <form action="/church/manger/AddToMainImgSilder.php" method="post" enctype="multipart/form-data">
             <label for="photo">Product Photo:</label>
             <input type="file" name="photo" accept="image/*" required>
             <br>

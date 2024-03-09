@@ -39,7 +39,7 @@
                 $c = 0;
                 while ($row = $result->fetch_assoc()) {
                   echo '<div class="col-md-4">
-                          <img src="/church/church/' . $row['img'] . '" alt="Gallery image" class="img-fluid" />
+                          <img src="../church/' . $row['img'] . '" alt="Gallery image" class="img-fluid" />
                         </div>';
                 }
             }   
