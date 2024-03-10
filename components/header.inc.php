@@ -1,6 +1,8 @@
 <header class="page-header gradient" id="gradient" style="margin-top: 0 " >
   <div class="headerTextDiv">
-    <h1 class="headerText">شبيبه ابو سنان</h1>    
+    <div class="animated-element animate__animated animate__rubberBand">
+      <h1 class="headerText">شبيبه ابو سنان</h1>    
+    </div>
   </div>
 </header>
 

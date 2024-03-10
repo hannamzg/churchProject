@@ -2,7 +2,9 @@
     <div class="churchInfo" style="display: flex; margin: 20px auto;justify-content: center; ">
         <div  class="iconsMainBigDiv">
             <div class="iconsMainDiv">
-                <img src="../church/img/christianity.png" alt="" class="iconsMain">
+                <div class="animated-element animate__animated animate__fadeInDownBig">
+                    <img src="../church/img/christianity.png" alt="" class="iconsMain">
+                </div>
             </div>
             <div class="iconsMainDiv">
                 <img src="../church/img/bible.png" alt="" class="iconsMain">
@@ -25,7 +27,9 @@
         </div>
         <div  class="iconsMainBigDiv">
             <div class="iconsMainDiv">
-                <img src="../church/img/church (1).png" alt="" class="iconsMain">
+                <div class="animated-element animate__animated animate__fadeInDownBig">
+                    <img src="../church/img/church (1).png" alt="" class="iconsMain">
+                </div>
             </div>
             <div class="iconsMainDiv">
                 <img src="../church/img/praying.png" alt="" class="iconsMain">
