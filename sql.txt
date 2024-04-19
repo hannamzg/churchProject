@@ -1,0 +1,230 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: Apr 19, 2024 at 06:38 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `church`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `admin_Id` int(11) NOT NULL,
+  `username` varchar(300) NOT NULL,
+  `password` varchar(300) NOT NULL,
+  `email` varchar(300) NOT NULL,
+  `createAt` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`admin_Id`, `username`, `password`, `email`, `createAt`) VALUES
+(1, 'hanna', '3a46cf3f34e4fac9b2dea133858d359a', 'hanna@gmail.com', '2024-01-19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
+--
+
+CREATE TABLE `content` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `content` text DEFAULT NULL,
+  `img` varchar(3000) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `pageID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `content`
+--
+
+INSERT INTO `content` (`id`, `title`, `content`, `img`, `created_at`, `updated_at`, `pageID`) VALUES
+(2, 'شبيبه ابو سنان المسيحيه', 'تأسّست خدمة الشبيبة منذ البداية على العمل الرسولي والتطوع إذ اتخذت من الآية “أَتَيْتُ لِتَكُونَ لَهُم الحَيَاة” (يو١٠:١٠) شعارًا لها، إيمانًا منها بأن السيد المسيح هو واهب الحياة، ويدعونا لعيشها بكاملها بحيث تدعمها كلمة الله والأسرار المقدسة القيم والمبادئ المسيحية.', 'church/uploads/430910086_423254923398985_8992598950818086049_n.jpg', '2024-03-04 15:12:41', '2024-03-05 16:47:08', 1),
+(9, 'شوي عن فعاليات الشبيبه', ' بل، وبعض وبداية الصفحة غزو قد، أي بحث تعداد الجنوب. قصف المسرح واستمر الاتحاد في، ذات أسيا للغزو، الخطّة و، الآخر لألمانيا جهة بل. في سحقت هيروشيما البريطاني يتم، غريمه باحتلال الأيديولوجية، في فصل، دحر وقرى لهيمنة الإيطالية 30. استبدال استسلام القاذفات عل مما. ببعض مئات وبلجيكا، قد أما، قِبل الدنمارك حتى كل، العمليات اليابانية انه أن', '', '2024-03-05 15:56:10', '2024-03-05 15:56:10', 2),
+(31, 'فعاليات هدا الاسبوع', 'بدأت قصتنا عندما وظّف غبطة البطريرك ميشيل صبّاح خبرته في العمل مع حركات الشبيبة في الشرق الأوسط والدولية، لخلق حركة شبابية في الأرض المقدسة عام ١٩٦٤ من خلال العمل في الرعايا تحت مظلّة مجلس الأساقفة الكاثوليك في الأرض المقدسة، وتحت متابعة وإدارة بطريركية القدس للاتين. تخدم شبيبة موطن يسوع حوالي ٣٥٠٠ طفل وشاب وفتاة مسيحيين (تتراوح أعمارهم تقريبًا بين ٧-٣٥ عامًا) حيث ينتمون إلى أكثر من ١٨ رعية والعديد من المدارس الكاثوليكية وكنائس مختلفة في ثماني محافظات فلسطينية.\\r\\n\\r\\nتأسّست خدمة الشبيبة منذ البداية على العمل الرسولي والتطوع إذ اتخذت من الآية “أَتَيْتُ لِتَكُونَ لَهُم الحَيَاة” (يو١٠:١٠) شعارًا لها، إيمانًا منها بأن السيد المسيح هو واهب الحياة، ويدعونا لعيشها بكاملها بحيث تدعمها كلمة الله والأسرار المقدسة القيم والمبادئ المسيحية. على هذا الأساس سيُغيّر الشباب المسيحي الكاثوليكي حياتهم، ويعملون على نقل الإيمان والحياة للآخرين في الكنيسة والمجتمع الفلسطيني، مما سيُعزّز القيم فيهم بطريقة يمكن تحويلها إلى واقع في جميع مجالات حياتهم.', 'church/uploads/430910086_423254923398985_8992598950818086049_n.jpg', '2024-03-06 17:28:25', '2024-03-06 17:29:19', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mainSilderimg`
+--
+
+CREATE TABLE `mainSilderimg` (
+  `id` int(11) NOT NULL,
+  `img` varchar(3000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mainSilderimg`
+--
+
+INSERT INTO `mainSilderimg` (`id`, `img`) VALUES
+(4, 'church/uploads/430910086_423254923398985_8992598950818086049_n.jpg'),
+(8, 'church/uploads/84b1d0c5-37a2-4ce6-81a8-80e5dd075284.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pages`
+--
+
+CREATE TABLE `pages` (
+  `id` int(11) NOT NULL,
+  `pageName` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pages`
+--
+
+INSERT INTO `pages` (`id`, `pageName`) VALUES
+(1, 'الصفحة الرئيسية'),
+(2, 'صفحه الصور'),
+(3, 'الصفحه الرئيسه فعاليات الاسبوع');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text DEFAULT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `stock_quantity` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `photo` varchar(1500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `id` int(11) NOT NULL,
+  `question_text` varchar(255) NOT NULL,
+  `option1` varchar(100) NOT NULL,
+  `option2` varchar(100) NOT NULL,
+  `option3` varchar(100) NOT NULL,
+  `correct_option` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`id`, `question_text`, `option1`, `option2`, `option3`, `correct_option`) VALUES
+(1, 'whyy', 'ya', 'to', 'hi', 'hi');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD UNIQUE KEY `admin_Id` (`admin_Id`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mainSilderimg`
+--
+ALTER TABLE `mainSilderimg`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `pages`
+--
+ALTER TABLE `pages`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `admin_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `mainSilderimg`
+--
+ALTER TABLE `mainSilderimg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
