@@ -22,7 +22,9 @@
 
   #gradient{
     position: relative;
-    background-image: url('../church/img/Cross-Background.jpg');
+    background-image: url('../img/Cross-Background.jpg');
+    background-image: url('../../church/img/Cross-Background.jpg');
+
     width: 100%;
     min-height: 400px;
     background-size: cover;

@@ -27,9 +27,7 @@
               <a class="nav-link" href="gallery.php">صور</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../manger/">admins</a>
-              <a class="nav-link" href="../../church/manger/">admins test</a>
-
+              <a class="nav-link" href="../church/manger/">admins</a>
             </li>
           </ul>
         </div>

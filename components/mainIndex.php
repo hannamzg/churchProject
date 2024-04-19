@@ -14,16 +14,20 @@
         <?php
             require('connect.php');
 
-            $sql = "SELECT * FROM `content` WHERE content.pageID = 1";
-        
+            $sql = "SELECT * FROM `content` WHERE pageID = 1"; // Removed 'content.' before pageID
             $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                echo "<h1>".$row['title']."</h1>";
-                echo "<p>".$row['content']."</p>";
-                echo '<img src="../church/' . $row['img'] . '" class="imgStart">';
 
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<h1>".$row['title']."</h1>";
+                    echo "<p>".$row['content']."</p>";
+                    echo '<img src="../church/' . $row['img'] . '" class="imgStart">';
+                }
+            } else {
+                echo "No results found.";
             }
         ?>
+
         </div>
         <div  class="iconsMainBigDiv">
             <div class="iconsMainDiv">
